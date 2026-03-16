@@ -27,13 +27,13 @@ Feature matrix  →  ML model  →  Clinical insight
 
 Two concept tables power the main tutorial:
 
-| Concept | Table | Measures | Key range |
-|---------|-------|----------|-----------|
-| **SOFA Score** | `mimiciv_derived.first_day_sofa` | Acute organ failure in first 24 h of ICU | 0 – 24 |
-| **Charlson Comorbidity Index** | `mimiciv_derived.charlson` | Chronic disease burden | 0 – 37 |
+| Concept                        | Table                            | Measures                                 | Key range |
+| ------------------------------ | -------------------------------- | ---------------------------------------- | --------- |
+| **SOFA Score**                 | `mimiciv_derived.first_day_sofa` | Acute organ failure in first 24 h of ICU | 0 – 24    |
+| **Charlson Comorbidity Index** | `mimiciv_derived.charlson`       | Chronic disease burden                   | 0 – 37    |
 
-SOFA answers *"how sick is this patient right now?"*
-Charlson answers *"what is their baseline physiological reserve?"*
+SOFA answers _"how sick is this patient right now?"_
+Charlson answers _"what is their baseline physiological reserve?"_
 Together, they predict in-hospital ICU mortality with AUC ~0.79 — capturing most of the
 signal that complex models achieve with dozens of variables.
 
@@ -41,15 +41,15 @@ signal that complex models achieve with dozens of variables.
 
 ## Repository Contents
 
-| File | Purpose |
-|------|---------|
-| `concepts_tutorial.ipynb` | **Main tutorial** — end-to-end walkthrough for clinicians |
-| `concepts_tutorial.html` | Static rendered version of the tutorial (no database needed) |
-| `Concepts_Self_Study_Tutorial.pptx` | Slide deck — conceptual overview and teaching guide |
-| `concepts.ipynb` | Broader explorer — all 65+ derived concept tables with examples |
-| `build_mimic.ipynb` | Database build pipeline — load MIMIC-IV into local PostgreSQL |
-| `test_mimic.ipynb` | Integration tests — verify data integrity after loading |
-| `TUTORIAL.md` | Full setup guide — prerequisites, data download, pipeline steps |
+| File                                | Purpose                                                         |
+| ----------------------------------- | --------------------------------------------------------------- |
+| `concepts_tutorial.ipynb`           | **Main tutorial** — end-to-end walkthrough for clinicians       |
+| `concepts_tutorial.html`            | Static rendered version of the tutorial (no database needed)    |
+| `Concepts_Self_Study_Tutorial.pptx` | Slide deck — conceptual overview and teaching guide             |
+| `concepts.ipynb`                    | Broader explorer — all 65+ derived concept tables with examples |
+| `build_mimic.ipynb`                 | Database build pipeline — load MIMIC-IV into local PostgreSQL   |
+| `test_mimic.ipynb`                  | Integration tests — verify data integrity after loading         |
+| `TUTORIAL.md`                       | Full setup guide — prerequisites, data download, pipeline steps |
 
 ---
 
@@ -58,15 +58,15 @@ signal that complex models achieve with dozens of variables.
 The notebook (`concepts_tutorial.ipynb`) walks through seven steps, each with clinical
 framing and annotated Python code:
 
-| Step | Clinical framing | Technical skill |
-|------|------------------|-----------------|
-| 1 | Connect Python to a medical database | Database connection with `psycopg` |
-| 2 | Understand SOFA and Charlson as *features* | SQL joins across schemas |
-| 3 | Build a labeled ICU cohort | Multi-table SQL query |
-| 4 | Explore score distributions by survival | Exploratory data analysis |
-| 5 | Handle missing scores from incomplete charts | Median imputation (no data leakage) |
-| 6 | Train a model to predict in-hospital mortality | Random Forest classifier |
-| 7 | Interpret model performance clinically | AUC-ROC, feature importance |
+| Step | Clinical framing                               | Technical skill                     |
+| ---- | ---------------------------------------------- | ----------------------------------- |
+| 1    | Connect Python to a medical database           | Database connection with `psycopg`  |
+| 2    | Understand SOFA and Charlson as _features_     | SQL joins across schemas            |
+| 3    | Build a labeled ICU cohort                     | Multi-table SQL query               |
+| 4    | Explore score distributions by survival        | Exploratory data analysis           |
+| 5    | Handle missing scores from incomplete charts   | Median imputation (no data leakage) |
+| 6    | Train a model to predict in-hospital mortality | Random Forest classifier            |
+| 7    | Interpret model performance clinically         | AUC-ROC, feature importance         |
 
 No prior Python or ML experience is assumed — every code pattern is explained.
 
@@ -77,15 +77,15 @@ No prior Python or ML experience is assumed — every code pattern is explained.
 ### 1. PhysioNet Access
 
 MIMIC-IV requires credentialed access:
+
 1. Create an account at [physionet.org](https://physionet.org)
 2. Complete the required CITI training course
 3. Request access to [MIMIC-IV](https://physionet.org/content/mimiciv/)
 
-### 2. Docker Desktop
+### 2. PostgreSQL database with MIMIC-IV data
 
-Required to run the PostgreSQL container:
-- **macOS**: [Docker Desktop for Mac](https://docs.docker.com/desktop/install/mac-install/)
-- **Linux**: [Docker Engine](https://docs.docker.com/engine/install/)
+Instructions on how to run the PostgreSQL container and load MIMIC-IV data:
+https://github.com/marcofanti/mimic-code-postgresql
 
 ### 3. uv (Python package manager)
 
@@ -163,13 +163,13 @@ Web admin UI (Adminer): [http://localhost:28080](http://localhost:28080)
 
 ## Why Derived Concepts Matter
 
-| Without derived concepts | With derived concepts |
-|--------------------------|----------------------|
-| Pull raw labs from `labevents`, `chartevents`, `outputevents` | Single `LEFT JOIN` |
-| Implement 24-hour ICU timing windows | Already handled |
-| Convert units, impute sub-scores | Already handled |
-| Validate SQL against published clinical definition | Already peer-reviewed |
-| Weeks of preprocessing | Minutes of SQL |
+| Without derived concepts                                      | With derived concepts |
+| ------------------------------------------------------------- | --------------------- |
+| Pull raw labs from `labevents`, `chartevents`, `outputevents` | Single `LEFT JOIN`    |
+| Implement 24-hour ICU timing windows                          | Already handled       |
+| Convert units, impute sub-scores                              | Already handled       |
+| Validate SQL against published clinical definition            | Already peer-reviewed |
+| Weeks of preprocessing                                        | Minutes of SQL        |
 
 The `mimiciv_derived` schema is built from the [MIT-LCP mimic-code](https://github.com/MIT-LCP/mimic-code)
 repository and covers severity scores (SOFA, SAPS II, OASIS), sepsis criteria, blood gas
@@ -187,6 +187,7 @@ uv run python test_mimic.py
 ```
 
 Expected output:
+
 ```
 ══════════════════════════════════════════════════════════════
 MIMIC-IV PostgreSQL Integration Tests
