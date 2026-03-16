@@ -102,11 +102,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ### Step 1 — Clone and set up
 
 ```bash
-git clone https://github.com/marcofanti/LearningProject2.git
-cd LearningProject2
-
-# Clone the MIT-LCP build scripts
-git clone https://github.com/MIT-LCP/mimic-code.git
+git clone https://github.com/marcofanti/mimic-iv-derived-concepts-tutorial
+cd mimic-iv-derived-concepts-tutorial
 
 # Install Python dependencies
 uv sync
@@ -121,14 +118,7 @@ cp .env.local .env
 
 ### Step 3 — Load MIMIC-IV and build derived concepts
 
-```bash
-# Run the full pipeline (loads data + builds ~65 derived concept tables)
-uv run python build_mimic.py
-```
-
-> **Note:** The initial data load takes 4–12 hours (the `chartevents` table has ~433 million rows).
-> Building the derived concepts schema takes an additional 15–60 minutes.
-> See [TUTORIAL.md](TUTORIAL.md) for full details and troubleshooting.
+Instructions to load MIMIC-IV and build derived concepts can be found here: https://github.com/marcofanti/mimic-code-postgresql
 
 ### Step 4 — Run the tutorial
 
