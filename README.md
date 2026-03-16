@@ -44,12 +44,13 @@ signal that complex models achieve with dozens of variables.
 | File                                | Purpose                                                         |
 | ----------------------------------- | --------------------------------------------------------------- |
 | `concepts_tutorial.ipynb`           | **Main tutorial** — end-to-end walkthrough for clinicians       |
-| `concepts_tutorial.html`            | Static rendered version of the tutorial (no database needed)    |
+| `concepts_tutorial.pdf`             | Static rendered version of the tutorial (no database needed)    |
 | `Concepts_Self_Study_Tutorial.pptx` | Slide deck — conceptual overview and teaching guide             |
+| `DerivedConceptsTutorial.mp4`       | Video walkthrough of the tutorial                               |
 | `concepts.ipynb`                    | Broader explorer — all 65+ derived concept tables with examples |
-| `build_mimic.ipynb`                 | Database build pipeline — load MIMIC-IV into local PostgreSQL   |
-| `test_mimic.ipynb`                  | Integration tests — verify data integrity after loading         |
-| `TUTORIAL.md`                       | Full setup guide — prerequisites, data download, pipeline steps |
+| `concepts.pdf`                      | Static rendered version of the concepts explorer                |
+| `concepts.py`                       | Python script version of the concepts explorer                  |
+| `README.md`                         | This file — prerequisites, tutorial information                 |
 
 ---
 
@@ -147,7 +148,7 @@ uv run jupyter lab concepts.ipynb
 The `mimiciv_derived` schema is built from the [MIT-LCP mimic-code](https://github.com/MIT-LCP/mimic-code)
 repository and covers severity scores (SOFA, SAPS II, OASIS), sepsis criteria, blood gas
 analysis, AKI staging (KDIGO), vasopressor dosing, antibiotic exposure, comorbidity indices,
-and more. Full description: [Pollard et al., JAMIA 2018](https://academic.oup.com/jamia/article/25/1/32/4259424).
+and more. Full description: [Johnson et al., Scientific Data 2023](https://www.nature.com/articles/s41597-022-01899-x).
 
 ---
 
