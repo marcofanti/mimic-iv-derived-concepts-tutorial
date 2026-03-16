@@ -168,35 +168,8 @@ and more. Full description: [Pollard et al., JAMIA 2018](https://academic.oup.co
 
 ---
 
-## Verify Your Setup
-
-After loading, run the integration test suite:
-
-```bash
-uv run python test_mimic.py
-```
-
-Expected output:
-
-```
-══════════════════════════════════════════════════════════════
-MIMIC-IV PostgreSQL Integration Tests
-══════════════════════════════════════════════════════════════
-  PASS   d_labitems: blood gas item IDs + labels
-  PASS   inputevents: vasopressor units
-  PASS   all concept tables have ≥1 row
-  PASS   sofa: unique (stay_id, hr)
-  PASS   sepsis3: unique stay_id
-  ...
-══════════════════════════════════════════════════════════════
-```
-
----
-
 ## License and Data Access
 
 - Code in this repository: MIT License
 - MIMIC-IV data: requires PhysioNet credentialing and CITI human subjects training
 - Built on [MIMIC-IV](https://physionet.org/content/mimiciv/) (Johnson et al., 2023)
-
-For full setup documentation, see [TUTORIAL.md](TUTORIAL.md).
