@@ -116,9 +116,9 @@ cp .env.local .env
 # Edit .env: set POSTGRES_PASSWORD and MIMIC_DATA_DIR
 ```
 
-### Step 3 — Load MIMIC-IV and build derived concepts
+### Step 3 — Create a PostgreSQL database and load MIMIC-IV and build derived concepts
 
-Instructions to load MIMIC-IV and build derived concepts can be found here: https://github.com/marcofanti/mimic-code-postgresql
+Instructions to create a PostgreSQL database and load MIMIC-IV and build derived concepts can be found here: https://github.com/marcofanti/mimic-code-postgresql
 
 ### Step 4 — Run the tutorial
 
