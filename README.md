@@ -134,23 +134,6 @@ uv run jupyter lab concepts.ipynb
 
 ---
 
-## Database Connection
-
-Once the database is running, connect with:
-
-```python
-import psycopg
-
-conn = psycopg.connect(
-    host="localhost", port=5432,
-    dbname="mimiciv", user="mimicuser", password="mimicpass",
-)
-```
-
-Web admin UI (Adminer): [http://localhost:28080](http://localhost:28080)
-
----
-
 ## Why Derived Concepts Matter
 
 | Without derived concepts                                      | With derived concepts |
